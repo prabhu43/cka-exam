@@ -1,9 +1,9 @@
 ### Practise Tasks:
 https://docs.google.com/spreadsheets/d/1hoyNr0xBLKEZNjefiqQTYweGmWQ4Qc-6LVgkuQSm99o/edit#gid=491339265
 https://docs.google.com/document/d/1o4qE9x4oXcqFgquUE1yYGJKhNmZnaeMR5SyxwjGGl1w/edit
-https://github.com/dgkanatsios/CKAD-exercises
+https://github.com/dgkanatsios/CKAD-exercises (this is for ckad)
 https://kubernetes.io/docs/tasks/
-https://github.com/walidshaari/Kubernetes-Certified-Administrator
+https://github.com/walidshaari/Kubernetes-Certified-Administrator (links for each section in the Currirulum is available)
 https://kubernetes.io/docs/tasks/debug-application-cluster/determine-reason-pod-failure/
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application-introspection/
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/

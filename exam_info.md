@@ -1,7 +1,7 @@
 ## CKA 2020
 
 **Purpose:**
-Provide assurance that CKAs have the skills, knowledge, and competency to perform the responsibilities of Kubernetes administrators
+Provide assurance that CKA holders have the skills, knowledge, and competency to perform the responsibilities of Kubernetes administrators
 
 **Cost**: $300
 **Duration**: 2 Hrs
