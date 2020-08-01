@@ -1,10 +1,13 @@
 ## Preparation:
-- required knowledge: Kubernetes API primitives, Kubernetes internals such as etcd, tls bootstrap, and kubelet
-- If you do not know how Systemd works, DO NOT attempt the exam until you are familiar with that (I am not an expert but I know what my LFCS cert taught me which I learnt here at LA as well), point is....you need at least an intermediatry level of linux experience.... some awk and cut tricks might come in handy as well.
-https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
-
-- I had basic understanding of Certificates and Keys....that was a huge mistake when attempting this exam....but it is a well learnt lesson and now I will be delving deeper into understanding that topic properly.
-- learn to use kubectl explain pod.spec.XXX, it saves time
+- Required K8s knowledge: 
+    - Kubernetes API primitives
+    - Kubernetes internals such as etcd, tls bootstrap and kubelet
+- Intermediate level of linux experience
+    - some awk and cut tricks might come in handy as well
+- systemd knowledge: https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+- Deep understanding about Certificates and Keys
+    - eg. find expiry date of a certificate
+- Learn to use `kubectl explain pod.spec.XXX`; it saves time
 
 ## Exam Environment
 - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
@@ -118,16 +121,11 @@ k apply -f $k8/pods/storage/pv-volume.yaml — dry-run -o yaml
 - If you’re spending more than 7 mins on questions worth only one or two percent (each question does tell you the percentage it is worth), move on
 - Just relax if you see something like "configure fluentd" or "HAproxy". No configuration of external tools will be asked of you! The config file is usually provided.
 
-### Tips for learning:
-- Do Kelsey Hightower’s tutorial Kubernetes The Hard Way at least three times! Understand it, internalize it.
-- Do all the tasks on https://kubernetes.io/docs/tasks/
-- Read Kubernetes in Action by Marko Luksa
-
 
 ### Tools Used:
-- tmux — this one is optional but does help on the exam. Know how to split screens and switch between them. You only get one console on the test.
+- tmux — does help on the exam. Know how to split screens and switch between them. You only get one console on the test.
 - vi — every edit and yaml file is done in vi. Be very comfortable navigating and editing files in vi, quickly.
-- Systemd — the test runs on Ubuntu 16 currently, so know how to manipulate services running under systemd (Digital ocean has a great intro to systemd post)
+- systemd — the test runs on Ubuntu 16 currently, so know how to manipulate services running under systemd (Digital ocean has a great intro to systemd post)
 - kubectl — well, obviously. Be extremely comfortable with this command.
 - cfssl/openssl — knowing how to generate certs (and what they are for) is important. Run through the hard way several times to be comfortable.
 

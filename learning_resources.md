@@ -23,6 +23,8 @@ https://github.com/kubernetes/examples
 https://gist.github.com/strongjz/4c9ad30a12ab715ae94cf72d0e7bbc30
 https://learning.oreilly.com/library/view/managing-kubernetes/9781492033905/
 https://itnext.io/cka-ckad-exam-managing-etcd-cluster-fc3feecfab5c
+https://github.com/wiewioras/k8s-labs
+https://kubernetesbyexample.com/
 
 ### Youtube Videos
 - [Kubernauts.io](https://www.youtube.com/channel/UC5NDQ4F0JPQozyqnh1mghHQ/videos)
