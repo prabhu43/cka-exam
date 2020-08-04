@@ -1,0 +1,7 @@
+- [kubeadm alpha commands](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-alpha/)
+    - kubeadm alpha certs renew
+    - kubeadm alpha certs certificate-key
+    - kubeadm alpha certs check-expiration
+    - kubeadm alpha kubeconfig user
+    - kubeadm alpha kubelet config
+    - kubeadm alpha selfhosting pivot

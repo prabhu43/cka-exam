@@ -8,6 +8,7 @@ https://kubernetes.io/docs/tasks/debug-application-cluster/determine-reason-pod-
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application-introspection/
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/
 https://levelup.gitconnected.com/kubernetes-cka-example-questions-practical-challenge-86318d85b4d
+https://github.com/stretchcloud/cka-lab-practice
 
 ### Slack Channel:
 #cka-open in https://kubernauts.slack.com 
