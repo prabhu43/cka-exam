@@ -6,6 +6,9 @@ In systemd, the target of most actions are “units”, which are resources that
 
 For service management tasks, the target unit will be service units, which have unit files with a suffix of .service
 
+### Location of systemd services
+- /lib/systemd/system
+- /etc/systemd/system - higher precendence
 ### 3 utilities
 - systemd/systemctl 
 - journald/journalctl - log management
@@ -14,6 +17,7 @@ For service management tasks, the target unit will be service units, which have 
 **States of a service**
 - enabled => it has a symlink in a .wants directory
 - disabled => no symlink
+- masked => completely unstartable, automatically or manually; linked to /dev/null
 - static => service is missing the [Install] section in its init script, so you cannot enable or disable it. Static services are usually dependencies of other services, and are controlled automatically
 > None of these states tell you if a service is running
 
@@ -79,10 +83,16 @@ systemctl cat [name.service]
 systemctl list-dependencies [name.service]
 
 # Show the dependent units, with target units recursively expanded
-systemctl list-dependencies --all nginx.service
+systemctl list-dependencies --all [name.service]
 
 # See low-level details of the unit’s settings on the system
 systemctl show [name.service]
+
+# Display single property of a unit
+systemctl show [name.service] -p Description
+
+systemctl mask [name.service]
+systemctl unmask [name.service]
 
 # Add a unit file snippet, which can be used to append or override settings in the default unit file
 systemctl edit [name.service]
