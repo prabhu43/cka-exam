@@ -13,3 +13,10 @@ Eg: Create a ClusterRole and ClusterRoleBinding so that user deploy@test.com can
 
 ##### Solution:
 use `--resource-name=compute` flag while creating role
+
+```
+# Create a Role named "pod-reader" with ResourceName specified
+kubectl create role pod-reader --verb=get \
+--resource=pods \
+--resource-name=readablepod --resource-name=anotherpod
+```
