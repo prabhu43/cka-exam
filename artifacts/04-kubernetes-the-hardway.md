@@ -1,0 +1,1 @@
+Do this atleast once https://github.com/kelseyhightower/kubernetes-the-hard-way
