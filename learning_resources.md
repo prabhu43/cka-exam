@@ -32,3 +32,4 @@ https://kubernetesbyexample.com/
 
 ### Practise environment
 https://github.com/arush-sal/cka-practice-environment
+https://github.com/ShubhamTatvamasi/kubernetes-practice-tests
