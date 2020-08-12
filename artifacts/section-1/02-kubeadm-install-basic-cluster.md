@@ -77,6 +77,8 @@ curl https://docs.projectcalico.org/manifests/canal.yaml -O
 kubectl apply -f canal.yaml
 ```
 
+> coredns pods will be in `Pending` state till the network plugin is installed. So ensure coredns pods goes to `Running` state after installing network plugin
+
 ### Worker node
 
 **Join worker node**
