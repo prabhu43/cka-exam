@@ -5,3 +5,9 @@ tmux new -s task1
 ## Rename session
 ctrl+a, $ 
 ```
+
+- To create some pods for debugging
+```
+k run busybox --image busybox -- sleep 1d
+k run utils --image arunvelsriram/utils -- sleep 1d
+```
