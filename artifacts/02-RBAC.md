@@ -2,6 +2,8 @@
 ```sh
 kubectl auth can-i get secret --as secret@test.com
 
+kubectl auth can-i get pods --as system:serviceaccount:default:sa-name
+
 kubectl create rolebinding default-edit --role deploymentEditor --serviceaccount default
 
 kubectl create clusterrolebinding dinesh-ca --user=Dinesh --clusterrole=cluster-admin

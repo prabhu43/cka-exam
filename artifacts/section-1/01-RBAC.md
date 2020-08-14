@@ -410,6 +410,11 @@ kubectl auth can-i create deployments --namespace dev
 # Administrators can combine this with user impersonation 
 # to determine what action other users can perform
 kubectl auth can-i list secrets --namespace dev --as dave
+
+kubectl auth can-i get secret --as secret@test.com
+
+# for service accounts, we have use system:serviceaccount:<namespace>:<serviceaccount-name>
+kubectl auth can-i get pods --as system:serviceaccount:default:sa-name
 ```
 
 ### Node Authorization
