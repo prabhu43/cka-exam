@@ -148,12 +148,21 @@ rules:
 subjects:
 - kind: Group # Other values are User and ServiceAccount
   name: system:authenticated # starting with `system:` is cluster reserved groups 
-  apiGroup: rbac.authorization.k8s.io # use namespace in case of ServiceAccount
+  apiGroup: rbac.authorization.k8s.io
+---
+- kind: Group
+  name: system:serviceaccounts:qa # For all service accounts in the "qa" namespace
+  apiGroup: rbac.authorization.k8s.io
+---
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: kube-system # use namespace in case of ServiceAccount
 ```
 
 ### Default roles and rolebindings
 - API servers create a set of default ClusterRole and ClusterRoleBinding objects
-- Many of these are system: prefixed, which indicates that the resource is directly managed by the cluster control plane
+- Many of these are `system:` prefixed, which indicates that the resource is directly managed by the cluster control plane
 - labeled with `kubernetes.io/bootstrapping=rbac-defaults`
 - apiserver does auto-reconcilation at each startup
     - enabled by default if the RBAC authorizer is active
@@ -165,7 +174,7 @@ k get clusterroles | grep 'system:'
 
 **API discovery roles**
 - Default clusterrolebinding `system:public-info-viewer` assigns default clusterrole `system:public-info-viewer` to `system:unauthenticated` group. This allows read-only access to non-sensitive information about the cluster 
-- To stop exposing version info to anonymous users, remove `/version` from clusterrole `system:public-info-viewer` and set `rbac.authorization.kubernetes.io/autoupdate: "false"`
+- To stop exposing version info to anonymous users, remove `/version` from clusterrole `system:public-info-viewer` and set annotation `rbac.authorization.kubernetes.io/autoupdate: "false"`
 - More default clusterroles for API discovery: https://kubernetes.io/docs/reference/access-authn-authz/rbac/#discovery-roles
 
 **User facing roles**

@@ -13,27 +13,36 @@ If API version is **not** 3.x.x, then
 ```sh
 etcdctl snapshot save <snapshot-file-name> --help
 ```
-We have to provide cacert, servercrt, serverkey, endpoints for the above command.
-We can find this values from etcd pod in kube-system namespace
-Default for kubeadm: `/etc/kubernetes/pki/etcd/ca.crt`
+
+We have to provide endpoints, cacert, servercrt, serverkey  for the above command. We can find these values from etcd pod in kube-system namespace or the static manifest for etcd (/etc/kubernetes/manifests/etcd.yaml).
 
 Example:
 ```sh
-etcdctl snapshot save snapshot.db --endpoints=https://172.17.0.3:2379 --cert=/var/lib/minikube/certs/etcd/server.crt --key=/var/lib/minikube/certs/etcd/server.key --cacert=/var/lib/minikube/certs/etcd/ca.crt
-```
+## take snapshot into file `snapshot.db`
+etcdctl snapshot save snapshot.db \
+    --endpoints=https://172.17.0.3:2379 \
+    --cacert=/var/lib/minikube/certs/etcd/ca.crt \
+    --cert=/var/lib/minikube/certs/etcd/server.crt \
+    --key=/var/lib/minikube/certs/etcd/server.key 
 
-```sh
-$ etcdctl snapshot status <snapshot-file-name> -w json
+# check status of snapshot taken
+etcdctl snapshot status <snapshot-file-name> -w json
 # sample output {"hash":1948432566,"revision":1645,"totalKey":611,"totalSize":1085440}
 ```
 
 #### 2) Restore using snapshot
 
+**restore snapshot**
 ```sh
 etcdctl snapshot restore --help
 ```
+
+Refer static manifest of etcd to populate the following required options. 
+    - `initial-cluster-token` and `data-dir` should be different from previous one
+    - others configs should be same
 Example:
 ```sh
+
 etcdctl snapshot restore ./snapshot.db \
     --endpoints=https://172.17.0.3:2379 \
     --cert=/var/lib/minikube/certs/etcd/server.crt \
@@ -46,4 +55,5 @@ etcdctl snapshot restore ./snapshot.db \
     --data-dir=/var/lib/minikube/etcd-restore
 ```
 
+**change etcd pod**
 Change `--initial-cluster-token=etcd-cluster-restore` and hostpath volume to new directory `/var/lib/minikube/etcd-restore`

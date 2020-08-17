@@ -21,6 +21,7 @@ kubeadm init --service-cidr {{ service_cidr }} \
 - execute the output of above command in worker node (kubeadm join)
 
 ## Setup HA control-plane cluster
+
 #### Create load balancer for kube-apiserver
 
 #### Initialize cluster
