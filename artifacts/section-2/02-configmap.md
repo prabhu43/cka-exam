@@ -226,8 +226,15 @@ spec:
           path: keys # creates file in /etc/config/keys
 ```
 
+```sh
+# Import environment from a config map with a prefix
+kubectl set env --from=configmap/myconfigmap --prefix=MYSQL_ deployment/myapp
+# Import specific keys from a config map
+kubectl set env --keys=my-example-key --from=configmap/myconfigmap deployment/myapp
+```
+
 ### Restrictions
-- You must create a ConfigMap before referencing it in a Pod spec
+- You must create a ConfigMap before referencing it in a Pod spec (unless you mark the ConfigMap as "optional").
 - pod will not start, if:
   - reference a ConfigMap that doesn't exist
   - references to keys that don't exist in the ConfigMap
