@@ -23,4 +23,7 @@ kubectl scale --replicas=5 rc/foo rc/bar rc/baz
 
 # Scale statefulsets named 'web' and 'utils' to 3
 kubectl scale --replicas=3 statefulset/web sts/utils
+
+# If horizontal scaling enabled
+kubectl autoscale deployment.v1.apps/nginx-deployment --min=10 --max=15 --cpu-percent=80
 ```
