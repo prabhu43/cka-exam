@@ -80,7 +80,8 @@ zk-pdb   2               N/A               0                     7s
     - No requests in any container
 
 We can see the QoS in the status object in the pod
-```sh
+
+```
 k get pod -o custom-columns=NAME:.metadata.name,QOS:.status.qosClass
 ```
 
@@ -89,4 +90,3 @@ References:
 - https://learnk8s.io/production-best-practices
 - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 - https://kubernetes.io/docs/concepts/workloads/pods/disruptions/
-- 
