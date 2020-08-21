@@ -10,7 +10,7 @@ alias kubens="k config set-context --current --namespace"
 alias newdep="k create deploy --dry-run=client -o yaml"
 alias newdep-server="k create deploy --dry-run=server -o yaml"
 
-export KS="-n kube-system" # k get po
+export KS="-n kube-system" # k get po $KS
 
 ## for auto completion
 source <(kubectl completion bash)
