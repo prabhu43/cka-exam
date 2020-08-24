@@ -3,6 +3,9 @@
 # install bash-completion
 sudo apt-get install bash-completion
 
+# install jq
+sudo apt-get install jq
+
 # install git
 sudo apt-get install git
 
