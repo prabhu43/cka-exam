@@ -180,7 +180,7 @@ kubectl create secret docker-registry myregistrykey --docker-server=DUMMY_SERVER
         --docker-username=DUMMY_USERNAME --docker-password=DUMMY_DOCKER_PASSWORD \
         --docker-email=DUMMY_DOCKER_EMAIL
 ```
-** Automatic injection of imagePullSecrets**
+**Automatic injection of imagePullSecrets**
 - Use service account
 ```sh
 kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "myregistrykey"}]}'

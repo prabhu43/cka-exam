@@ -84,5 +84,12 @@ kubectl patch pod valid-pod --type='json' -p='[{"op": "replace", "path": "/spec/
 kubectl patch deployment patch-demo --patch "$(cat patch-file.yaml)"
 ```
 
+#### kubectl diff
+```sh
+# print the object that will be created
+# diff uses server-side dry-run, which needs to be enabled on kube-apiserver
+kubectl diff -f https://k8s.io/examples/application/simple_deployment.yaml
+```
+
 #### References:
 - All 5 links in https://kubernetes.io/docs/tasks/manage-kubernetes-objects/
