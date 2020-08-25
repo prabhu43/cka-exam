@@ -9,7 +9,7 @@ Create a very minimal configuration file in the home path (~/.tmux.conf)
 ```bash
 set -g prefix C-a  # tmux prefix control-a
 set -g mouse on    # scrollable
-set -g history-limit 50000
+set -g history-limit 50000 # scroll history
 
 bind - split-window -v # split vertical using -
 bind _ split-window -h # split horizontal using _
