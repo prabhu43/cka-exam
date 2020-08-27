@@ -14,8 +14,6 @@ https://kubernetes.io/docs/tasks/inject-data-application/podpreset/
 https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/#debugging-with-ephemeral-debug-container
 
-## CertificateSigningRequest
-https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/
 
 ## Encrypt Data at Rest
 https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
