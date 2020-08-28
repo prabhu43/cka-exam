@@ -14,9 +14,9 @@ spec:
     # exposes port 80
     - protocol: TCP # Supported protocols: TCP(default), UDP, HTTP, PROXY, SCTP
       port: 80
-      targetPort: 9376
+      targetPort: 9376 # If this is a string, it will be looked up as a named port in the target Pod's container ports. If this is not specified, the value of the 'port' field is used (an identity map)
 ```
-- Kubernetes assigns this Service an IP address (sometimes called the "cluster IP"), which is used by the Service proxies
+- Kubernetes(service controller) assigns this Service an IP address (sometimes called the "cluster IP"), which is used by the Service proxies
 - controller for the Service selector continuously scans for Pods that match its selector, and then POSTs any updates to an Endpoint object also named “my-service”
 - Port definitions in Pods can have names, and you can reference these names in the `targetPort` attribute of a Service. using this, you can change the port numbers that Pods expose in the next version of your backend software, without breaking clients
 
@@ -48,6 +48,7 @@ metadata:
 subsets:
   - addresses:
       # endpoint IPs must not be: loopback (127.0.0.0/8 for IPv4), or link-local (169.254.0.0/16 and 224.0.0.0/24 for IPv4)
+      # Endpoint IP addresses cannot be the cluster IPs of other Kubernetes Services, because kube-proxy doesn't support virtual IPs as a destination
       - ip: 192.0.2.42 
     ports:
       - port: 9376
@@ -99,7 +100,7 @@ spec:
 
 ### Discovering services
 **Environment Variables**
-- When a Pod is run on a Node, the kubelet adds a set of environment variables for each active Service
+- When a Pod is run on a Node, the kubelet adds a set of environment variables for each active Service (within same namespace)
 - Add `{SVCNAME}_SERVICE_HOST` and `{SVCNAME}_SERVICE_PORT` variables; Service name is upper-cased and dashes are converted to underscores
 - must create the Service before the client Pods come into existence. Otherwise, those client Pods won't have their environment variables populated
 
@@ -113,10 +114,14 @@ spec:
   - port named `http` with protocol `TCP`
     - you can do a DNS SRV query for `_http._tcp.my-service.my-ns` to discover the port number for "http", as well as the IP address
 - Kubernetes DNS server is the only way to access ExternalName Services
+- FQDN: <svcname>.<namespace>.svc.<cluster_domain> 
+- cluster domain: default is `cluster.local`
+  - can be found at `networking.dnsDomain` in kubeadm config map
 
 ### Headless Services
 - set `.spec.clusterIP` to `None`
 - no loadbalancing and no single service IP
+  - can do client side loadbalancing (will get IPs of all pods behind it)
 - kube-proxy does not handle these Services
 - `with selectors`: endpoints controller creates Endpoints records in the API, and modifies the DNS configuration to return records (addresses) that point directly to the Pods backing the Service
 - `without selectors`: endpoints controller does not create Endpoints records
@@ -128,7 +133,9 @@ spec:
 - NodePort: Exposes the Service on each Node's IP at a static port (the NodePort). A ClusterIP Service, to which the NodePort Service routes, is automatically created. You'll be able to contact the NodePort Service, from outside the cluster, by requesting `<NodeIP>:<NodePort>`
 - LoadBalancer: Exposes the Service externally using a cloud provider's load balancer. NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created
 - ExternalName: Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value
-
+```
+k create svc externalname google --external-name google.com
+```
 
 ### DNS for pods
 https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods

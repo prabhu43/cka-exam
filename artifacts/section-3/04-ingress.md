@@ -16,7 +16,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
+  - http: # since there is no host, this is applicable for all incoming requests to IP
       paths:
       - path: /testpath
         pathType: Prefix # ImplementationSpecific(default), Exact, Prefix

@@ -60,7 +60,35 @@ data:
     }
 ```
 
+- resolve external name to the internal ClusterIP, avoiding the hairpin traffic(travel out of the cluster and then back in via the external IP). Use `rewrite` in Corefile in core-dns configmap.
+```
+.:53 {
+    rewrite name foo.example.com foo.default.svc.cluster.local
+    kubernetes cluster.local 10.0.0.0/24
+    ...
+}
+```
+- To let CoreDNS know that the Corefile has changed, send SIGUSR1 signal to tell it to reload graceful - that is, without loss of service
+```
+kubectl exec -n kube-system coredns-980047985-g2748 -- kill -SIGUSR1 1
+```
+
+### commands useful for troubleshooting
+```
+host kubernetes.default
+
+nslookup kubernetes.default
+
+dig kubernetes.default
+``` 
+
+### estimate the amount of memory required for a CoreDNS instance
+- MB required (default settings) = (Number of Pods + Services) / 1000 + 54
+- MB required (with autopath plugin) = (Number of Pods + Services) / 250 + 56
+
 ## References:
 https://kubernetes.io/docs/tasks/administer-cluster/coredns/
 https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/
 https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
+https://coredns.io/2017/05/08/custom-dns-entries-for-kubernetes/
+https://coredns.io/2018/11/15/scaling-coredns-in-kubernetes-clusters/

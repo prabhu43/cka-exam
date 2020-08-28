@@ -7,7 +7,7 @@
 # 2048 bits
 openssl genrsa -out prabhu.key 2048
 
-# generate certificate
+# generate certificate, give user name in Common Name
 # '-new' => new request
 # '-key prabhu.key' => use the private key contained in file
 # '-out prabhu.csr' => write certificate to file
@@ -36,7 +36,7 @@ kubectl certificate approve prabhu
 # Ensure the status of csr is approved
 kubectl get csr
 
-# Check the status.certificate; it is the signed certificate
+# Check the status.certificate; it is the signed certificate(base64 encoded)
 kubectl get csr/prabhu -o yaml
 
 # fetch the signed certificate
@@ -56,7 +56,7 @@ CLUSTER_NAME=$(kubectl config view -o jsonpath='{.clusters[0].name}')
 SERVER=$(kubectl config view -o jsonpath='{.clusters[0].cluster.server}')
 kubectl config set-cluster $CLUSTER_NAME --server=$SERVER --certificate-authority=k8s-ca.crt --kubeconfig=prabhu-k8s-config --embed-certs
 ```
-- add user credentials 
+- add user credentials (use signed certificate and private key)
 ```sh
 kubectl config set-credentials prabhu --client-certificate=prabhu.crt --client-key=prabhu.key --embed-certs --kubeconfig=prabhu-k8s-config
 ```
