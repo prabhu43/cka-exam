@@ -80,11 +80,14 @@ host kubernetes.default
 nslookup kubernetes.default
 
 dig kubernetes.default
-``` 
+```
 
 ### estimate the amount of memory required for a CoreDNS instance
 - MB required (default settings) = (Number of Pods + Services) / 1000 + 54
 - MB required (with autopath plugin) = (Number of Pods + Services) / 250 + 56
+
+### We cannot exec into coredns pod
+https://github.com/coredns/coredns/issues/3533
 
 ## References:
 https://kubernetes.io/docs/tasks/administer-cluster/coredns/

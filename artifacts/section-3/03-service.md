@@ -117,6 +117,7 @@ spec:
 - FQDN: <svcname>.<namespace>.svc.<cluster_domain> 
 - cluster domain: default is `cluster.local`
   - can be found at `networking.dnsDomain` in kubeadm config map
+  - can be found in kubelet config `/var/lib/kubelet/config.yaml`
 
 ### Headless Services
 - set `.spec.clusterIP` to `None`
@@ -138,6 +139,16 @@ k create svc externalname google --external-name google.com
 ```
 
 ### DNS for pods
+
+`Example:`
+- 172-17-0-3.default.pod.cluster.local.
+>notice: it is pod.cluster.local
+- busybox-1.default-subdomain.my-namespace.svc.cluster-domain.example
+    ```yaml
+    spec:
+      hostname: busybox-1
+      subdomain: default-subdomain
+
 https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods
 
 ## References:
