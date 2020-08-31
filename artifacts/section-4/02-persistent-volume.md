@@ -217,50 +217,6 @@ spec:
 
 ![](../../images/static-volume-binding-matrix.png)
 
-## Volume Snapshot
-- supports CSI Volume Plugins only
-- To enable support for restoring a volume from a volume snapshot data source, enable the `VolumeSnapshotDataSource` feature gate on the apiserver and controller-manager
-  - beta feature; enabled by default
-
-```yaml
-# Create a PersistentVolumeClaim from a Volume Snapshot
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: restore-pvc
-spec:
-  storageClassName: csi-hostpath-sc
-  dataSource:
-    name: new-snapshot-test
-    kind: VolumeSnapshot
-    apiGroup: snapshot.storage.k8s.io
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-```
-
-### Volume Cloning
-- supports CSI Volume Plugins only
-```yaml
-# Create PersistentVolumeClaim from an existing PVC
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: cloned-pvc
-spec:
-  storageClassName: my-csi-plugin
-  dataSource:
-    name: existing-src-pvc-name
-    kind: PersistentVolumeClaim
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-```
-
 ### Writing Portable Configuration
 https://kubernetes.io/docs/concepts/storage/persistent-volumes/#writing-portable-configuration
 
@@ -343,3 +299,7 @@ metadata:
 ```sh
 k patch pv <pv-name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
 ```
+
+## References:
+https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+https://kubernetes.io/docs/tasks/administer-cluster/change-pv-reclaim-policy/
