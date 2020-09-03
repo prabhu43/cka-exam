@@ -52,6 +52,8 @@ apiVersion: v1
     - `FallbackToLogsOnError`: last chunk of container log output if the termination message file is empty and the container exited with an error
     - log output is limited to 2048 bytes or 80 lines, whichever is smaller
 
+## Debugging pods
+https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods
 
 ## Debug Running Pods
 
@@ -99,3 +101,4 @@ kubectl alpha debug -it ephemeral-demo --image=busybox --target=ephemeral-demo
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-init-containers/
 https://kubernetes.io/docs/tasks/debug-application-cluster/determine-reason-pod-failure/
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/
+https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/
