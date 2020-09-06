@@ -102,3 +102,4 @@ https://kubernetes.io/docs/tasks/debug-application-cluster/debug-init-containers
 https://kubernetes.io/docs/tasks/debug-application-cluster/determine-reason-pod-failure/
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/
+https://kubernetes.io/docs/tasks/debug-application-cluster/debug-pod-replication-controller/
