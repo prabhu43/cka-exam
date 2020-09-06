@@ -26,6 +26,19 @@ k label node NODE_NAME KEY=VALUE
 k label -h
 ```
 
+**Taint node**
+```sh
+# Add a taint to a node
+# taint effects: NoSchedule, PreferNoSchedule, NoExecute
+k taint nodes NODE_NAME KEY=VALUE:TAINT_EFFECT
+
+# Remove from node 'foo' the taint with key 'dedicated' and effect 'NoSchedule' if one exists.
+k taint nodes foo dedicated:NoSchedule-
+
+# for more examples
+k taint -h
+```
+
 > If a node fails and has to be recreated, you must re-apply the label to the recreated node. To make this easier, you can use Kubelet's command-line parameter for applying node labels in your node startup script.
 
 **[kubeadm alpha commands](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-alpha/)**
