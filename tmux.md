@@ -17,7 +17,9 @@ bind _ split-window -h # split horizontal using _
 
 ##### Minimal Shortcuts:
 
-- create new session `prefix + :new`
+- create new session
+    - `prefix + :new` and then `prefix + s` to switch to new session
+    - `tmux new -s name -d` and then `prefix + s` to switch to new session
 - create window `prefix + c   `
 - zoom in/out panes `prefix + z   `
 - switch sessions `prefix + s   `
