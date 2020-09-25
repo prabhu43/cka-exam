@@ -9,6 +9,8 @@ command:
 ```
 - Use `pod.spec.schedulerName` to assign the pod to particular scheduler
 
+> Note: `--leader-elect=false` is important. Or else scheduler will be waiting for other scheduler to become available and this is prevent from scheduling the pods
+
 ```
 # Show events with scheduler info
 k get events -o wide
