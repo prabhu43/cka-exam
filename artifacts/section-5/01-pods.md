@@ -13,6 +13,7 @@ kubectl logs <pod-name> -c <init-container-2>
 `Pending` - The Pod has not yet begun executing Init Containers
 `PodInitializing` or `Running`	- The Pod has already finished executing Init Containers
 
+Note: InitContainers will run in sequence. If there are 4 init containers, one by one will run. After all are completed only, pod will go PodInitializing/Running status
 
 ## Determine the Reason for Pod Failure
 
