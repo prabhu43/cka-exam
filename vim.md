@@ -3,9 +3,18 @@ Minimal configuration in ~/.vimrc
 Note: We have to add `source ~/.vimrc` in the `~/.bashrc` file
 
 ```
-set ts=2 // one tab = two spaces
-set et   // change tab to spaces
-set nu   // show line number
+set ts=2
+set sts=2
+set sw=2
+
+set expandtab
+
+set ruler
+
+syntax on
+filetype indent plugin on
+
+set nu
 ```
 
 While pasting something in yaml file, to avoid auto intendation `set paste`.
