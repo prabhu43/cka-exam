@@ -6,14 +6,12 @@ Note: We have to add `source ~/.vimrc` in the `~/.bashrc` file
 set ts=2
 set sts=2
 set sw=2
-
-set expandtab
+set expandtab // set et
 
 set ruler
-
 syntax on
-filetype indent plugin on
 
+set paste
 set nu
 ```
 
