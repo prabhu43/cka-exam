@@ -81,3 +81,6 @@ provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ```
 - do not currently support dynamic provisioning
+
+## References:
+https://kubernetes.io/docs/concepts/storage/storage-classes/

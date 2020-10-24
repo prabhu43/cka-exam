@@ -50,3 +50,21 @@ kubeadm alpha kubeconfig user
 kubeadm alpha kubelet config
 kubeadm alpha selfhosting pivot
 ```
+
+**kubectl top**
+```
+# most cpu consuming pods
+# --reverse for descending order
+# --key 3 means order by 3rd column
+k top po -A | sort --reverse --key 3
+```
+
+**View custom kubeconfig file as json**
+```
+k config view --kubeconfig=<config-file>
+```
+
+**Verbs applicable for a resource**
+```
+k api-resources -o wide
+```

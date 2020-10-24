@@ -46,7 +46,7 @@ spec:
 
 ### Defaulting Behavior
 - A cluster administrator can enable this behavior by
-    - Marking one `StorageClass` object as default;
+    - Marking one `StorageClass` object as default; `storageclass.kubernetes.io/is-default-class`
     - Making sure that the `DefaultStorageClass` admission controller is enabled on the API server
 - When a default StorageClass exists in a cluster and a user creates a PersistentVolumeClaim with storageClassName unspecified, the DefaultStorageClass admission controller automatically adds the storageClassName field pointing to the default storage class
 
