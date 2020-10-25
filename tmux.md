@@ -13,6 +13,8 @@ set -g history-limit 50000 # scroll history
 
 bind - split-window -v # split vertical using -
 bind _ split-window -h # split horizontal using _
+
+bind C-a send-prefix # Ctrl-a + Ctrl-a to go to begining of line
 ```
 
 ##### Minimal Shortcuts:
