@@ -11,9 +11,11 @@ set expandtab // set et
 set ruler
 syntax on
 
-set paste
+set paste // during set paste: et,ts,retab will not work
 set nu
 ```
 
 While pasting something in yaml file, to avoid auto intendation `set paste`.
 After pasted, `set nopaste`
+
+`set line` to highlight the tabs and line-ends

@@ -14,7 +14,6 @@ echo "set sw=2" >> ~/.vimrc
 echo "set expandtab" >> ~/.vimrc
 echo "set ruler" >> ~/.vimrc
 echo "syntax on" >> ~/.vimrc
-echo "filetype indent plugin on" >> ~/.vimrc
 echo "set nu" >> ~/.vimrc
 echo "source ~/.vimrc" >> ~/.bashrc # we have to source at end
 

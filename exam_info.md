@@ -5,10 +5,10 @@ Provide assurance that CKA holders have the skills, knowledge, and competency to
 
 **Cost**: $300
 **Duration**: 2 Hrs
-**Tasks**: 20-25 performance-based tasks each having different weights
+**Tasks**: 17-18 performance-based tasks each having different weights
 **Environment**: Command line(Terminal)
 **K8s Version**: v1.19
-**Minimum score to pass**: 74% 
+**Minimum score to pass**: 66%
 **Retake**: 1 free retake allowed within 12 months, in case failed in the first attempt
 **Scoring method**: Automatically graded based on correct results.
 **Results**: Will be emailed within 36 hrs from the time exam completed. Also available in My Portal

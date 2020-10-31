@@ -148,6 +148,7 @@ k create svc externalname google --external-name google.com
     spec:
       hostname: busybox-1
       subdomain: default-subdomain
+>note: this will work only when there is a headless service with name default-subdomain and point to these pods
 
 https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods
 
